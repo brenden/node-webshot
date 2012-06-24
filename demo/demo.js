@@ -1,22 +1,26 @@
-var fs = require('fs')
-  , async = require('async')
-  , webshot = require('../lib/webshot');
+var webshot = require('../lib/webshot');
 
-// Simplest usage: no options
-webshot('google.com', function(err, image) {
+var options = {
+  screenSize: {
+    width: 320
+  , height: 280
+  }
+, shotSize: {
+    width: 'window'
+  , height: 480
+  }
+, script: function() {
+    var links = document.getElementsByTagName('h2');
+    for (var i=0; i<links.length; i++) {
+      var link = links[i];
+      link.innerHTML = 'This is an H2 heading';
+    }
+  }
+, userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)'
+    + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+}
+
+webshot('flickr.com', './flickr.png', options, function(err) {
   if (err) return console.log(err);
-
-  // do something with `image`
+  console.log('OK');
 });
-
-var webshotOptions = {
-  device: 'desktop' // or 'tablet' or 'mobile'
-, screenSize: {width: 1024, height: 768}
-, shotSize: {width: '100%', height: 768 /* or '56%' or 'screen'*/}
-, thumbCompression: 0.2 //max 1 -- full size
-, script: function() {}
-};
-
-webshot('github.com', webshotOptions, function() {
-
-})
