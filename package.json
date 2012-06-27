@@ -1,0 +1,17 @@
+{
+  "name": "webshot",
+  "description": "Easy website screenshots",
+  "version": "0.1.0",
+  "author": "Brenden Kokoszka",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/brenden/node-webshot.git"
+  },
+  "engine": [ "node >=0.7.00" ],
+  "main": "./lib/webshot.js",
+  "keywords": [
+    "screenshot",
+    "screengrab"
+  ]
+}
