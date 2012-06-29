@@ -1,0 +1,28 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'test' ]
+2 info using npm@1.1.30
+3 info using node@v0.8.0
+4 verbose config file /home/brenden/.npmrc
+5 verbose config file /usr/local/etc/npmrc
+6 verbose config file /usr/local/lib/node_modules/npm/npmrc
+7 verbose read json /home/brenden/markover/node-webshot/test/package.json
+8 error Error: ENOENT, open '/home/brenden/markover/node-webshot/test/package.json'
+8 error  { [Error: ENOENT, open '/home/brenden/markover/node-webshot/test/package.json']
+8 error   errno: 34,
+8 error   code: 'ENOENT',
+8 error   path: '/home/brenden/markover/node-webshot/test/package.json' }
+9 error You may report this log at:
+9 error     <http://github.com/isaacs/npm/issues>
+9 error or email it to:
+9 error     <npm-@googlegroups.com>
+10 error System Linux 3.2.0-24-generic
+11 error command "/usr/local/bin/node" "/usr/local/bin/npm" "test"
+12 error cwd /home/brenden/markover/node-webshot/test
+13 error node -v v0.8.0
+14 error npm -v 1.1.30
+15 error path /home/brenden/markover/node-webshot/test/package.json
+16 error code ENOENT
+17 error message ENOENT, open '/home/brenden/markover/node-webshot/test/package.json'
+18 error errno 34
+19 error 34 errno
+20 verbose exit [ 34, true ]

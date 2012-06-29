@@ -9,7 +9,14 @@
     "url": "http://github.com/brenden/node-webshot.git"
   },
   "engine": [ "node >=0.7.00" ],
+  "devDependencies": {
+    "mocha" : "*",
+        "should": "*"
+  },
   "main": "./lib/webshot.js",
+  "scripts": {
+    "test"  : "mocha --ui bdd --reporter spec --require should ./test/tests.js"
+  },
   "keywords": [
     "screenshot",
     "screengrab"
