@@ -47,12 +47,12 @@ location given by the `phantomPath` option (see following section).
 An optional `options` object can be passed as the third parameter in a call to webshot.
 
 ### screenSize
-*default: { width: 1024, height: 768 }*
+**default: { width: 1024, height: 768 }**
 
 The dimensions of the browser window
 
 ### shotSize
-*default: { width: 'screen', height: 'screen' }*
+**default: { width: 'screen', height: 'screen' }**
 
 The area of the page document, starting at the upper left corner, to render. Possible 
 values are 'screen', 'all', and a number defining a pixel length. 
