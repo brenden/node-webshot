@@ -57,10 +57,10 @@ The dimensions of the browser window
 The area of the page document, starting at the upper left corner, to render. Possible 
 values are 'screen', 'all', and a number defining a pixel length. 
 
-_'screen'_  causes the length to be set to the length of the window (i.e. the shot 
+**'screen'**  causes the length to be set to the length of the window (i.e. the shot 
 displays what is initially visible within the browser window).
 
-_'all'_  causes the length to be set to the length of the document along the given dimension.
+**'all'**  causes the length to be set to the length of the document along the given dimension.
 
 ### phantomPath
 **default: 'phantomjs'**
