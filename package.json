@@ -11,7 +11,8 @@
   "engine": [ "node >=0.7.00" ],
   "devDependencies": {
     "mocha" : "*",
-        "should": "*"
+    "should": "*",
+    "imagemagick": "0.1.x"
   },
   "main": "./lib/webshot.js",
   "scripts": {
