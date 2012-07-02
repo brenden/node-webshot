@@ -1,5 +1,4 @@
-node-webshot
-============
+# node-webshot
 
 Webshot provides a simple API for taking webpage screenshots. The module is a light
 wrapper around PhantomJS, which utilizes WebKit to perform the page rendering. 
