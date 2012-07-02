@@ -57,25 +57,25 @@ The dimensions of the browser window
 The area of the page document, starting at the upper left corner, to render. Possible 
 values are 'screen', 'all', and a number defining a pixel length. 
 
-_'screen'_ causes the length to be set to the length of the window (i.e. the shot 
+_'screen'_  causes the length to be set to the length of the window (i.e. the shot 
 displays what is initially visible within the browser window).
 
-_'all'_ causes the length to be set to the length of the document along the given dimension.
+_'all'_  causes the length to be set to the length of the document along the given dimension.
 
 ### phantomPath
-*default: 'phantomjs'*
+**default: 'phantomjs'**
 
 The location of phantomjs. By default, webshot assumes it is accessible through the 
 `$PATH` variable.
 
 ### userAgent
-*default: undefined*
+**default: undefined**
 
 The `user-agent` string Phantom sends to the requested page. If left unset, the default Phantom
 `user-agent` will be used
 
 ### script
-*default: undefined*
+**default: undefined**
 
 An arbitrary function to be executed on the requested page. The script executes within the page's 
 context and can be used to modify the page before a screenshot is taken. 
