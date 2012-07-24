@@ -1,6 +1,6 @@
 {
   "name": "webshot",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Easy website screenshots",
   "author": "Brenden Kokoszka",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "main": "./lib/webshot.js",
   "scripts": {
-    "test"  : "mocha --ui bdd --reporter spec --require should ./test/tests.js"
+    "test"  : "mocha --ui bdd --reporter spec --require should --globals i ./test/tests.js"
   },
   "keywords": [
     "screenshot",
