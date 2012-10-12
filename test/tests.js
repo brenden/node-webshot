@@ -2,10 +2,9 @@ var webshot = require('../lib/webshot')
   , should = require('should')
   , fs = require('fs')
   , im = require('imagemagick')
-  , testFile = 'test.png';
+  , testFile = __dirname + '/test.png';
 
 describe('Creating screenshot images', function() {
-
   it('creates a screenshot', function(done) {
     this.timeout(20000);
 
@@ -18,6 +17,8 @@ describe('Creating screenshot images', function() {
       });
     });
   });
+
+  return;
 
   it('overwrites existing screenshots', function(done) {
     this.timeout(20000);
@@ -64,7 +65,6 @@ describe('Handling screenshot dimension options', function() {
     });
   });
 
-
   it('creates a properly-sized image for partial shots', function(done) {
     this.timeout(20000);
 
@@ -87,6 +87,54 @@ describe('Handling screenshot dimension options', function() {
 
         features.width.should.equal(options.shotSize.width);
         features.height.should.equal(options.shotSize.height);
+        done();
+      });
+    });
+  });
+
+  it('properly handles height "all" with body height', function(done) {
+    this.timeout(20000);
+
+    var fixture1 = 'file://' + __dirname + '/fixtures/1.html';
+    var options = {
+      shotSize: {
+        width: 'window'
+      , height: 'all'
+      }
+    };
+
+    webshot(fixture1, testFile, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(testFile, function(err, features) {
+        if (err) return done(err);
+
+        features.width.should.equal(1024);
+        features.height.should.equal(999);
+        done();
+      });
+    });
+  });
+
+  it('properly handles height "all" with document height', function(done) {
+    this.timeout(20000);
+
+    var fixture2 = 'file://' + __dirname + '/fixtures/2.html';
+    var options = {
+      shotSize: {
+        width: 'window'
+      , height: 'all'
+      }
+    };
+
+    webshot(fixture2, testFile, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(testFile, function(err, features) {
+        if (err) return done(err);
+
+        features.width.should.equal(1024);
+        features.height.should.equal(999);
         done();
       });
     });
