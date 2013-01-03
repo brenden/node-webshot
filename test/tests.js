@@ -48,7 +48,7 @@ describe('Handling screenshot dimension options', function() {
     this.timeout(20000);
 
     var options = {
-      screenSize: {
+      windowSize: {
         width: 1000
       , height: 1000
       }
@@ -58,8 +58,8 @@ describe('Handling screenshot dimension options', function() {
       if (err) return done(err);
 
       im.identify(testFile, function(err, features) {
-        features.width.should.equal(options.screenSize.width);
-        features.height.should.equal(options.screenSize.height);
+        features.width.should.equal(options.windowSize.width);
+        features.height.should.equal(options.windowSize.height);
         done();
       });
     });

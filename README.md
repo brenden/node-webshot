@@ -54,12 +54,12 @@ An optional `options` object can be passed as the third parameter in a call to w
   </thead>
   <tbody>
     <tr>
-      <th>screenSize</th> 
+      <th>windowSize</th> 
       <td>
 <pre>{ width: 1024
 , height: 768 }</pre>
       </td>
-      <td>The dimensions of the browser window</td> 
+      <td>The dimensions of the browser window. <em>screenSize</em> is an alias for this property.</td> 
     </tr>
     <tr>
       <th>shotSize</th> 
