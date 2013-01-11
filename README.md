@@ -13,6 +13,20 @@ webshot('google.com', 'google.png', function(err) {
 });
 ```
 
+Alternately, the screenshot can be streamed back to the caller:
+
+```javascript
+var webshot = require('webshot');
+
+webshot('google.com', function(err, renderStream) {
+  var file = fs.createWriteStream('google.png', {encoding: 'binary'});
+
+  renderStream.on('data', function(data) {
+    file.write(data.toString('binary'), 'binary');
+  });
+});
+```
+
 An example showing how to take a screenshot of a site's mobile version:
 
 ```javascript

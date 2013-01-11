@@ -18,8 +18,6 @@ describe('Creating screenshot images', function() {
     });
   });
 
-  return;
-
   it('overwrites existing screenshots', function(done) {
     this.timeout(20000);
 
@@ -38,6 +36,27 @@ describe('Creating screenshot images', function() {
           });
         }); 
       }, 100);
+    });
+  });
+
+  it('streams a screenshot', function(done) {
+    this.timeout(20000);
+
+    webshot('google.com', function(err, renderStream) {
+      if (err) return done(err);
+
+      var file = fs.createWriteStream(testFile, {encoding: 'binary'});
+
+      renderStream.on('data', function(data) {
+        file.write(data.toString('binary'), 'binary');
+      });
+
+      renderStream.on('end', function() { 
+        fs.exists(testFile, function(exists) {
+          exists.should.equal(true);
+          done();
+        });
+      });
     });
   });
 });
