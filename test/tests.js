@@ -42,19 +42,23 @@ describe('Creating screenshot images', function() {
   it('streams a screenshot', function(done) {
     this.timeout(20000);
 
-    webshot('google.com', function(err, renderStream) {
+    fs.unlink(testFile, function(err) {
       if (err) return done(err);
 
-      var file = fs.createWriteStream(testFile, {encoding: 'binary'});
+      webshot('google.com', function(err, renderStream) {
+        if (err) return done(err);
 
-      renderStream.on('data', function(data) {
-        file.write(data.toString('binary'), 'binary');
-      });
+        var file = fs.createWriteStream(testFile, {encoding: 'binary'});
 
-      renderStream.on('end', function() { 
-        fs.exists(testFile, function(exists) {
-          exists.should.equal(true);
-          done();
+        renderStream.on('data', function(data) {
+          file.write(data.toString('binary'), 'binary');
+        });
+
+        renderStream.on('end', function() { 
+          fs.exists(testFile, function(exists) {
+            exists.should.equal(true);
+            done();
+          });
         });
       });
     });
@@ -161,7 +165,6 @@ describe('Handling screenshot dimension options', function() {
 });
 
 describe('Passing errors for bad input', function() {
-  this.timeout(6000);
   
   it('Passes an error if an invalid extension is given', function(done) {
 
