@@ -115,6 +115,12 @@ An optional `options` object can be passed as the third parameter in a call to w
       <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are 
       'png', 'jpg', and 'jpeg'.
       </td> 
+    </tr> 
+    <tr>
+      <th>renderDelay</th>
+      <td>0</td>
+      <td>Number of milliseconds to wait after a page loads before taking the screenshot.
+      </td> 
     </tr>
   </tbody>
 </table>
