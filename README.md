@@ -109,6 +109,13 @@ An optional `options` object can be passed as the third parameter in a call to w
       context and can be used to modify the page before a screenshot is taken. 
       </td> 
     </tr>
+    <tr>
+      <th>streamType</th> 
+      <td>'png'</td>
+      <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are 
+      'png', 'jpg', and 'jpeg'.
+      </td> 
+    </tr>
   </tbody>
 </table>
 
