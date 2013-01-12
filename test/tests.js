@@ -161,7 +161,8 @@ describe('Handling screenshot dimension options', function() {
 });
 
 describe('Passing errors for bad input', function() {
-
+  this.timeout(6000);
+  
   it('Passes an error if an invalid extension is given', function(done) {
 
     webshot('betabeat.com', 'output.xyz', function(err) {
