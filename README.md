@@ -12,7 +12,10 @@ webshot('google.com', 'google.png', function(err) {
   // screenshot now saved to google.png 
 });
 ```
-Alternately, if phantomJS is not installed in the path:
+Alternately, if phantomJS is not already installed:
+```
+npm install phantomjs --save
+```
 
 ```javascript
 var webshot = require('webshot');
