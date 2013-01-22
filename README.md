@@ -12,7 +12,18 @@ webshot('google.com', 'google.png', function(err) {
   // screenshot now saved to google.png 
 });
 ```
+Alternately, if phantomJS is not installed in the path:
 
+```javascript
+var webshot = require('webshot');
+var options = {
+  phantomPath: './node_modules/phantomjs/bin/phantomjs'
+}
+
+webshot('google.com', 'google.png', options, function(err) {
+  // screenshot now saved to google.png 
+});
+```
 Alternately, the screenshot can be streamed back to the caller:
 
 ```javascript
