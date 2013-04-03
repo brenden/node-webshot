@@ -116,6 +116,12 @@ An optional `options` object can be passed as the third parameter in a call to w
       <td>Number of milliseconds to wait after a page loads before taking the screenshot.
       </td> 
     </tr>
+    <tr>
+      <th>takeShotOnCallback</th>
+      <td>false</td>
+      <td>Wait for the web page to signal to webshot when to take the photo using <code>window.callPhantom('takeShot');</code>
+      </td> 
+    </tr>
   </tbody>
 </table>
 
