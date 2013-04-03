@@ -123,6 +123,13 @@ An optional `options` object can be passed as the third parameter in a call to w
       <td>Number of milliseconds to wait after a page loads before taking the screenshot.
       </td> 
     </tr>
+    <tr>
+      <th>timeout</th>
+      <td>0</td>
+      <td>Number of milliseconds to wait before killing the phantomjs process and assuming webshotting has failed.
+      (0 is no timeout.)
+      </td>
+    </tr>
   </tbody>
 </table>
 

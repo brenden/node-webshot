@@ -167,6 +167,7 @@ describe('Handling screenshot dimension options', function() {
 describe('Passing errors for bad input', function() {
   
   it('Passes an error if an invalid extension is given', function(done) {
+    this.timeout(20000);
 
     webshot('betabeat.com', 'output.xyz', function(err) {
       should.exist(err);
@@ -175,6 +176,7 @@ describe('Passing errors for bad input', function() {
   });
 
   it('Passes an error if a misformatted address is given', function(done) { 
+    this.timeout(20000);
 
     webshot('abcdefghijklmnop', 'google.png', function(err) {
       should.exist(err);
@@ -183,9 +185,29 @@ describe('Passing errors for bad input', function() {
   });
 
   it('Passes an error if no webpage exists at the address', function(done) { 
+    this.timeout(20000);
 
     webshot('http://abc1234xyz123455555.com', testFile, function(err) {
       should.exist(err);
+      done();
+    });
+  });
+});
+
+describe('Time out', function() {
+  it('should time out', function(done) {
+    this.timeout(20000);
+
+    // If the render delay is larger than the timeout delay, the timeout should be triggered.
+    var options = {
+      renderDelay: 10000,
+      timeout: 3000
+    };
+
+    var url = 'file://' + __dirname + '/fixtures/1.html';
+    webshot(url, testFile, options, function(err) {
+      should.exist(err);
+      should.equal(err.message, 'PhantomJS did not respond within the given timeout setting.');
       done();
     });
   });
