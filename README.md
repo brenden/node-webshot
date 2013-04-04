@@ -120,7 +120,9 @@ An optional `options` object can be passed as the third parameter in a call to w
 </table>
 
 ## Tests
-Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`.
+Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`. The tests use
+[node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require that the 
+[imagemagick CLI tools](http://www.imagemagick.org) be installed.
 
 ## License
 (The MIT License)
