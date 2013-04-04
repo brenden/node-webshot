@@ -50,12 +50,6 @@ webshot('flickr.com', 'flickr.jpeg', options, function(err) {
 });
 ```
 
-## Installation
-This module uses PhantomJS to render pages. Make sure Phantom is present on 
-your system. It must either be available through the `$PATH` variable or have its 
-location given by the `phantomPath` option (see following section). PhantomJS
-binaries and source can be downloaded from [the PhantomJS download page](http://phantomjs.org/download.html).
-
 ## Options
 An optional `options` object can be passed as the third parameter in a call to webshot.
 
@@ -94,8 +88,7 @@ An optional `options` object can be passed as the third parameter in a call to w
     <tr>
       <th>phantomPath</th> 
       <td>'phantomjs'</td>
-      <td>The location of phantomjs. By default, webshot assumes it is accessible through
-      the <code>$PATH</code> variable. </td> 
+      <td>The location of phantomjs. By default, webshot uses binary provided by phantomjs NPM module</td> 
     </tr>
     <tr>
       <th>userAgent</th> 
