@@ -88,7 +88,8 @@ An optional `options` object can be passed as the third parameter in a call to w
     <tr>
       <th>phantomPath</th> 
       <td>'phantomjs'</td>
-      <td>The location of phantomjs. By default, webshot uses binary provided by phantomjs NPM module</td> 
+      <td>The location of phantomjs. Webshot tries to use the binary provided by the phantomjs NPM 
+      module, and falls back to 'phantomjs' if the module isn't available.</td> 
     </tr>
     <tr>
       <th>userAgent</th> 
