@@ -117,6 +117,13 @@ An optional `options` object can be passed as the third parameter in a call to w
       </td> 
     </tr>
     <tr>
+      <th>timeout</th>
+      <td>0</td>
+      <td>Number of milliseconds to wait before killing the phantomjs process and assuming webshotting has failed.
+      (0 is no timeout.)
+      </td>
+    </tr>
+    <tr>
       <th>takeShotOnCallback</th>
       <td>false</td>
       <td>Wait for the web page to signal to webshot when to take the photo using <code>window.callPhantom('takeShot');</code>
@@ -126,7 +133,9 @@ An optional `options` object can be passed as the third parameter in a call to w
 </table>
 
 ## Tests
-Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`.
+Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`. The tests use
+[node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require that the 
+[imagemagick CLI tools](http://www.imagemagick.org) be installed.
 
 ## License
 (The MIT License)
