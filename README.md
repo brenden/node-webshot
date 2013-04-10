@@ -124,6 +124,12 @@ An optional `options` object can be passed as the third parameter in a call to w
       (0 is no timeout.)
       </td>
     </tr>
+    <tr>
+      <th>takeShotOnCallback</th>
+      <td>false</td>
+      <td>Wait for the web page to signal to webshot when to take the photo using <code>window.callPhantom('takeShot');</code>
+      </td> 
+    </tr>
   </tbody>
 </table>
 
