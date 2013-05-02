@@ -105,6 +105,13 @@ An optional `options` object can be passed as the third parameter in a call to w
       </td> 
     </tr>
     <tr>
+      <th>paperSize</th> 
+      <td>undefined</td>
+      <td>When generating a PDF, sets page.paperSize. Some options are documented here: https://github.com/ariya/phantomjs/pull/15 Example: <code>{format: 'A4', orientation: 'portrait'}</code> 
+      </td> 
+    </tr>
+
+    <tr>
       <th>streamType</th> 
       <td>'png'</td>
       <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are 
