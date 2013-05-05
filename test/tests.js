@@ -2,7 +2,8 @@ var webshot = require('../lib/webshot')
   , should = require('should')
   , fs = require('fs')
   , im = require('imagemagick')
-  , testFile = __dirname + '/test.png';
+  , testFile = __dirname + '/test.png'
+  , testPDF = __dirname + '/test.pdf';
 
 describe('Creating screenshot images', function() {
   it('creates a screenshot', function(done) {
@@ -83,6 +84,27 @@ describe('Handling screenshot dimension options', function() {
       im.identify(testFile, function(err, features) {
         features.width.should.equal(options.windowSize.width);
         features.height.should.equal(options.windowSize.height);
+        done();
+      });
+    });
+  });
+
+  it('creates a properly-sized page for pdf shots', function(done) {
+    this.timeout(20000);
+
+    var options = {
+      paperSize: {
+        format: 'Letter'
+      , orientation: 'portrait'
+      }
+    };
+
+    webshot('flickr.com', testPDF, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(testPDF, function(err, features) {
+        console.log(features);
+        features['print size'].should.equal('8.5x11');
         done();
       });
     });
