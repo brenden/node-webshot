@@ -103,7 +103,6 @@ describe('Handling screenshot dimension options', function() {
       if (err) return done(err);
 
       im.identify(testPDF, function(err, features) {
-        console.log(features);
         features['print size'].should.equal('8.5x11');
         done();
       });
