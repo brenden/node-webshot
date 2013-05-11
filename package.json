@@ -1,6 +1,6 @@
 {
   "name": "webshot",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Easy website screenshots",
   "author": "Brenden Kokoszka",
   "license": "MIT",
@@ -15,7 +15,7 @@
   "devDependencies": {
     "mocha" : "*",
     "should": "*",
-    "imagemagick": "0.1.x"
+    "imagemagick": "git://github.com/rsms/node-imagemagick.git"
   },
   "main": "./lib/webshot.js",
   "scripts": {
