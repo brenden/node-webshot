@@ -13,6 +13,17 @@ webshot('google.com', 'google.png', function(err) {
 });
 ```
 
+An html example:
+
+```javascript
+var webshot = require('webshot');
+
+webshot('<html><body>Hello World</body></html>', 'hello_world.png', {siteType:'html'}, function(err) {
+  // screenshot now saved to google.png 
+});
+```
+
+
 Alternately, the screenshot can be streamed back to the caller:
 
 ```javascript
