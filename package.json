@@ -3,6 +3,16 @@
   "version": "0.3.5",
   "description": "Easy website screenshots",
   "author": "Brenden Kokoszka",
+  "contributors": [
+    {
+      "name": "Brenden Kokoszka",
+      "email": "brenden.kokoszka@gmail.com"
+    },
+    {
+      "name": "Matthew Chase Whittemore",
+      "email": "mcwhittemore@gmail.com"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
