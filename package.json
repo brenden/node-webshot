@@ -1,15 +1,25 @@
 {
   "name": "webshot",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "Easy website screenshots",
   "author": "Brenden Kokoszka",
+  "contributors": [
+    {
+      "name": "Brenden Kokoszka",
+      "email": "brenden.kokoszka@gmail.com"
+    },
+    {
+      "name": "Matthew Chase Whittemore",
+      "email": "mcwhittemore@gmail.com"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "http://github.com/brenden/node-webshot.git"
   },
   "engine": [ "node >=0.7.00" ],
-  "optionalDependencies": {
+  "dependencies": {
     "phantomjs": "~1.9.0-1"
   },
   "devDependencies": {

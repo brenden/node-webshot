@@ -3,7 +3,7 @@
 Webshot provides a simple API for taking webpage screenshots. The module is a light wrapper around PhantomJS, which utilizes WebKit to perform the page rendering. 
 
 ## Examples
-A simple example:
+A simple url example:
 
 ```javascript
 var webshot = require('webshot');
@@ -12,6 +12,17 @@ webshot('google.com', 'google.png', function(err) {
   // screenshot now saved to google.png 
 });
 ```
+
+An html example:
+
+```javascript
+var webshot = require('webshot');
+
+webshot('<html><body>Hello World</body></html>', 'hello_world.png', {siteType:'html'}, function(err) {
+  // screenshot now saved to hello_world.png
+});
+```
+
 
 Alternately, the screenshot can be streamed back to the caller:
 
@@ -117,7 +128,14 @@ An optional `options` object can be passed as the third parameter in a call to w
       <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are 
       'png', 'jpg', and 'jpeg'.
       </td> 
-    </tr> 
+    </tr>
+    <tr>
+      <th>siteType</th> 
+      <td>'url'</td>
+      <td>siteType indicates whether the content needs to be requested (url) or is being provided ('html'). Possible values are 
+      'url' and 'html'.
+      </td> 
+    </tr>
     <tr>
       <th>renderDelay</th>
       <td>0</td>

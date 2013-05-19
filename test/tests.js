@@ -19,6 +19,18 @@ describe('Creating screenshot images', function() {
     });
   });
 
+  it('takes a screenshot of the provided html', function(done) {
+    this.timeout(20000);
+
+    webshot('<html><body>This is a test</body></html>', testFile, {siteType:'html'}, function(err) {
+      if (err) return done(err);
+      fs.exists(testFile, function(exists) {
+        exists.should.equal(true);
+        done();
+      });
+    });
+  });
+
   it('overwrites existing screenshots', function(done) {
     this.timeout(20000);
 
