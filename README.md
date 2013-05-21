@@ -132,7 +132,7 @@ An optional `options` object can be passed as the third parameter in a call to w
     <tr>
       <th>siteType</th> 
       <td>'url'</td>
-      <td>siteType indicates whether the content needs to be requested (url) or is being provided ('html'). Possible values are 
+      <td>siteType indicates whether the content needs to be requested ('url') or is being provided ('html'). Possible values are 
       'url' and 'html'.
       </td> 
     </tr>
