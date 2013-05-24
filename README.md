@@ -103,6 +103,11 @@ An optional `options` object can be passed as the third parameter in a call to w
       module, and falls back to 'phantomjs' if the module isn't available.</td> 
     </tr>
     <tr>
+      <th>phantomConfig</th> 
+      <td>{}</td>
+      <td>Object with key value pairs corresponding to phantomjs <a href="https://github.com/ariya/phantomjs/wiki/API-Reference#command-line-options">command line options</a>.</td> 
+    </tr>
+    <tr>
       <th>userAgent</th> 
       <td>undefined</td>
       <td>The <code>user-agent</code> string Phantom sends to the requested page. If left unset, the default
