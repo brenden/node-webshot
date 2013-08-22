@@ -168,6 +168,9 @@ Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be 
 [node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require that the 
 [imagemagick CLI tools](http://www.imagemagick.org) be installed.
 
+## Running on Heroku
+[See this comment.](https://github.com/brenden/node-webshot/issues/25#issuecomment-23019665)
+
 ## License
 (The MIT License)
 
