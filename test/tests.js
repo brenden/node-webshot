@@ -44,7 +44,7 @@ describe('Creating screenshot images', function() {
           fs.stat(testFile, function (err, overwritten) {
             if (err) return done(err);
 
-            initial.ctime.should.be.below(overwritten.ctime);
+            initial.mtime.should.be.below(overwritten.mtime);
             done();
           });
         }); 
