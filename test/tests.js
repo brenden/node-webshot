@@ -68,8 +68,9 @@ describe('Creating screenshot images', function() {
         });
 
         renderStream.on('end', function() { 
-          fs.exists(testFile, function(exists) {
-            exists.should.equal(true);
+          im.identify(testFile, function(err, features) {
+            features.width.should.be.above(0);
+            features.height.should.be.above(0);
             done();
           });
         });

@@ -62,7 +62,7 @@ webshot('flickr.com', 'flickr.jpeg', options, function(err) {
 ```
 
 ## Options
-An optional `options` object can be passed as the third parameter in a call to webshot.
+An optional `options` object can be passed as the parameter directly preceding the callback in a call to webshot.
 
 <table>
   <thead>
