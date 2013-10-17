@@ -5,6 +5,20 @@ var webshot = require('../lib/webshot')
   , testFile = __dirname + '/test.png'
   , testPDF = __dirname + '/test.pdf';
 
+// Some test documents
+var fixtures = [
+  {
+    path: 'file://' + __dirname + '/fixtures/1.html'
+  , width: 1024
+  , height: 999
+  }
+, {
+    path: 'file://' + __dirname + '/fixtures/2.html'
+  , width: 1024
+  , height: 1000
+  }
+];
+
 describe('Creating screenshot images', function() {
   it('creates a screenshot', function(done) {
     this.timeout(20000);
@@ -152,7 +166,7 @@ describe('Handling screenshot dimension options', function() {
   it('properly handles height "all" with body height', function(done) {
     this.timeout(20000);
 
-    var fixture1 = 'file://' + __dirname + '/fixtures/1.html';
+    var fixture = fixtures[0];
     var options = {
       shotSize: {
         width: 'window'
@@ -160,14 +174,14 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot(fixture1, testFile, options, function(err) {
+    webshot(fixture.path, testFile, options, function(err) {
       if (err) return done(err);
 
       im.identify(testFile, function(err, features) {
         if (err) return done(err);
 
-        features.width.should.equal(1024);
-        features.height.should.equal(999);
+        features.width.should.equal(fixture.width);
+        features.height.should.equal(fixture.height);
         done();
       });
     });
@@ -176,7 +190,7 @@ describe('Handling screenshot dimension options', function() {
   it('properly handles height "all" with document height', function(done) {
     this.timeout(20000);
 
-    var fixture2 = 'file://' + __dirname + '/fixtures/2.html';
+    var fixture = fixtures[1];
     var options = {
       shotSize: {
         width: 'window'
@@ -184,14 +198,14 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot(fixture2, testFile, options, function(err) {
+    webshot(fixture.path, testFile, options, function(err) {
       if (err) return done(err);
 
       im.identify(testFile, function(err, features) {
         if (err) return done(err);
 
-        features.width.should.equal(1024);
-        features.height.should.equal(999);
+        features.width.should.equal(fixture.width);
+        features.height.should.equal(fixture.height);
         done();
       });
     });
@@ -238,8 +252,7 @@ describe('Time out', function() {
       timeout: 3000
     };
 
-    var url = 'file://' + __dirname + '/fixtures/1.html';
-    webshot(url, testFile, options, function(err) {
+    webshot(fixtures[0].path, testFile, options, function(err) {
       should.exist(err);
       should.equal(err.message, 'PhantomJS did not respond within the given timeout setting.');
       done();
