@@ -175,8 +175,13 @@ An optional `options` object can be passed as the parameter directly preceding t
     <tr>
       <th>cookies</th>
       <td>[]</td>
-      <td>Array of cookies to add to the page. See https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-cookie 
-      Example: <code>[{name: 'foo', value: 'bar', domain: 'localhost'}]</code></td>
+        <td>Array of cookies to add to the page. See https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-cookie
+      Example: <code><pre>[{
+  name: 'foo',
+  value: 'bar',
+  domain: 'localhost'
+}]</pre></code>
+      </td>
     </tr>
   </tbody>
 </table>
