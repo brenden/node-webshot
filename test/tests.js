@@ -52,7 +52,7 @@ describe('Creating screenshot images', function() {
     fs.stat(testFile, function (err, initial) {
       if (err) return done(err);
 
-      setTimeout(function() {    
+      setTimeout(function() {
         webshot('google.com', testFile, function(err) {
           if (err) return done(err);
 
@@ -62,7 +62,7 @@ describe('Creating screenshot images', function() {
             initial.mtime.should.be.below(overwritten.mtime);
             done();
           });
-        }); 
+        });
       }, 100);
     });
   });
@@ -82,7 +82,7 @@ describe('Creating screenshot images', function() {
           file.write(data.toString('binary'), 'binary');
         });
 
-        renderStream.on('end', function() { 
+        renderStream.on('end', function() {
           im.identify(testFile, function(err, features) {
             features.width.should.be.above(0);
             features.height.should.be.above(0);
@@ -250,7 +250,7 @@ describe('Handling screenshot dimension options', function() {
 
 
 describe('Passing errors for bad input', function() {
-  
+
   it('passes an error if an invalid extension is given', function(done) {
     this.timeout(20000);
 
@@ -294,6 +294,32 @@ describe('Time out', function() {
       should.exist(err);
       should.equal(err.message, 'PhantomJS did not respond within the given timeout setting.');
       done();
+    });
+  });
+});
+
+describe('Handling the cookies option', function() {
+  it('does not break page rendering', function(done) {
+    var options = {
+      cookies: [
+        {
+          'name':     'x',
+          'value':    'test',
+          'domain':   'localhost',
+          'path':     '/'
+        }
+      ]
+    };
+
+    this.timeout(20000);
+
+    webshot('google.com', testFile, function(err) {
+      if (err) return done(err);
+
+      fs.exists(testFile, function(exists) {
+        exists.should.equal(true);
+        done();
+      });
     });
   });
 });

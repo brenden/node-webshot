@@ -1,6 +1,6 @@
 # node-webshot
 
-Webshot provides a simple API for taking webpage screenshots. The module is a light wrapper around PhantomJS, which utilizes WebKit to perform the page rendering. 
+Webshot provides a simple API for taking webpage screenshots. The module is a light wrapper around PhantomJS, which utilizes WebKit to perform the page rendering.
 
 ## Examples
 A simple url example:
@@ -9,7 +9,7 @@ A simple url example:
 var webshot = require('webshot');
 
 webshot('google.com', 'google.png', function(err) {
-  // screenshot now saved to google.png 
+  // screenshot now saved to google.png
 });
 ```
 
@@ -74,27 +74,27 @@ An optional `options` object can be passed as the parameter directly preceding t
   </thead>
   <tbody>
     <tr>
-      <th>windowSize</th> 
+      <th>windowSize</th>
       <td>
 <pre>{ width: 1024
 , height: 768 }</pre>
       </td>
-      <td>The dimensions of the browser window. <em>screenSize</em> is an alias for this property.</td> 
+      <td>The dimensions of the browser window. <em>screenSize</em> is an alias for this property.</td>
     </tr>
     <tr>
-      <th>shotSize</th> 
+      <th>shotSize</th>
       <td>
 <pre>{ width: 'window'
 , height: 'window' }</pre>
       </td>
       <td>The area of the page document, starting at the upper left corner, to render.
-      Possible values are 'screen', 'all', and a number defining a pixel length. 
+      Possible values are 'screen', 'all', and a number defining a pixel length.
       <br /> <br />
-      <strong>'window'</strong> causes the length to be set to the length of the window (i.e. 
+      <strong>'window'</strong> causes the length to be set to the length of the window (i.e.
       the shot displays what is initially visible within the browser window).
       <br /> <br />
       <strong>'all'</strong> causes the length to be set to the length of the document along
-      the given dimension. </td> 
+      the given dimension. </td>
     </tr>
     <tr>
       <th>shotOffset</th>
@@ -109,55 +109,55 @@ An optional `options` object can be passed as the parameter directly preceding t
       pixels on the site to be rendered).</td>
     </tr>
     <tr>
-      <th>phantomPath</th> 
+      <th>phantomPath</th>
       <td>'phantomjs'</td>
-      <td>The location of phantomjs. Webshot tries to use the binary provided by the phantomjs NPM 
-      module, and falls back to 'phantomjs' if the module isn't available.</td> 
+      <td>The location of phantomjs. Webshot tries to use the binary provided by the phantomjs NPM
+      module, and falls back to 'phantomjs' if the module isn't available.</td>
     </tr>
     <tr>
-      <th>phantomConfig</th> 
+      <th>phantomConfig</th>
       <td>{}</td>
-      <td>Object with key value pairs corresponding to phantomjs <a href="https://github.com/ariya/phantomjs/wiki/API-Reference#command-line-options">command line options</a>.</td> 
+      <td>Object with key value pairs corresponding to phantomjs <a href="https://github.com/ariya/phantomjs/wiki/API-Reference#command-line-options">command line options</a>.</td>
     </tr>
     <tr>
-      <th>userAgent</th> 
+      <th>userAgent</th>
       <td>undefined</td>
       <td>The <code>user-agent</code> string Phantom sends to the requested page. If left unset, the default
-      Phantom <code>user-agent</code> will be used</td> 
+      Phantom <code>user-agent</code> will be used</td>
     </tr>
     <tr>
-      <th>script</th> 
+      <th>script</th>
       <td>undefined</td>
-      <td>An arbitrary function to be executed on the requested page. The script executes within the page's 
-      context and can be used to modify the page before a screenshot is taken. 
-      </td> 
+      <td>An arbitrary function to be executed on the requested page. The script executes within the page's
+      context and can be used to modify the page before a screenshot is taken.
+      </td>
     </tr>
     <tr>
-      <th>paperSize</th> 
+      <th>paperSize</th>
       <td>undefined</td>
-      <td>When generating a PDF, sets page.paperSize. Some options are documented here: https://github.com/ariya/phantomjs/pull/15 Example: <code>{format: 'A4', orientation: 'portrait'}</code> 
-      </td> 
+      <td>When generating a PDF, sets page.paperSize. Some options are documented here: https://github.com/ariya/phantomjs/pull/15 Example: <code>{format: 'A4', orientation: 'portrait'}</code>
+      </td>
     </tr>
 
     <tr>
-      <th>streamType</th> 
+      <th>streamType</th>
       <td>'png'</td>
-      <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are 
+      <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are
       'png', 'jpg', and 'jpeg'.
-      </td> 
+      </td>
     </tr>
     <tr>
-      <th>siteType</th> 
+      <th>siteType</th>
       <td>'url'</td>
-      <td>siteType indicates whether the content needs to be requested ('url') or is being provided ('html'). Possible values are 
+      <td>siteType indicates whether the content needs to be requested ('url') or is being provided ('html'). Possible values are
       'url' and 'html'.
-      </td> 
+      </td>
     </tr>
     <tr>
       <th>renderDelay</th>
       <td>0</td>
       <td>Number of milliseconds to wait after a page loads before taking the screenshot.
-      </td> 
+      </td>
     </tr>
     <tr>
       <th>timeout</th>
@@ -170,14 +170,19 @@ An optional `options` object can be passed as the parameter directly preceding t
       <th>takeShotOnCallback</th>
       <td>false</td>
       <td>Wait for the web page to signal to webshot when to take the photo using <code>window.callPhantom('takeShot');</code>
-      </td> 
+      </td>
+    </tr>
+    <tr>
+      <th>cookies</th>
+      <td>[]</td>
+      <td>Array of cookies to add to the page. See https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-cookie Example: <code>[{name: 'foo', value: 'bar', domain: 'localhost'}]</code></td>
     </tr>
   </tbody>
 </table>
 
 ## Tests
 Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`. The tests use
-[node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require that the 
+[node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require that the
 [imagemagick CLI tools](http://www.imagemagick.org) be installed.
 
 ## Running on Heroku
