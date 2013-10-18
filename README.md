@@ -97,6 +97,18 @@ An optional `options` object can be passed as the parameter directly preceding t
       the given dimension. </td> 
     </tr>
     <tr>
+      <th>shotOffset</th>
+      <td><pre>{ left: 0
+, right: 0
+, top: 0
+, bottom: 0 }</pre></td>
+      <td>The left and top offsets define the upper left corner of the
+      screenshot rectangle. The right and bottom offsets allow pixels
+      to be removed from the shotSize dimensions (e.g. a shotSize height of
+      'all' with a bottom offset of 30 would cause all but the last 30 rows of
+      pixels on the site to be rendered).</td>
+    </tr>
+    <tr>
       <th>phantomPath</th> 
       <td>'phantomjs'</td>
       <td>The location of phantomjs. Webshot tries to use the binary provided by the phantomjs NPM 

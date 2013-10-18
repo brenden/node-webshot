@@ -19,6 +19,7 @@ var fixtures = [
   }
 ];
 
+
 describe('Creating screenshot images', function() {
   it('creates a screenshot', function(done) {
     this.timeout(20000);
@@ -93,6 +94,7 @@ describe('Creating screenshot images', function() {
   });
 });
 
+
 describe('Handling screenshot dimension options', function() {
 
   it('creates a properly-sized image for full-window shots', function(done) {
@@ -147,6 +149,10 @@ describe('Handling screenshot dimension options', function() {
     , shotSize: {
         width: 500
       , height: 500
+      }
+    , shotOffset: {
+        left: 10
+      , top: 10
       }
     };
 
@@ -210,11 +216,42 @@ describe('Handling screenshot dimension options', function() {
       });
     });
   });
+
+  it('crops shots with right and bottom offsets', function(done) {
+    this.timeout(20000);
+
+    var fixture = fixtures[1];
+    var options = {
+      shotSize: {
+        width: 'all'
+      , height: 'all'
+      }
+    , shotOffset: {
+        right: 10
+      , bottom: 10
+      }
+    };
+
+    webshot(fixture.path, testFile, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(testFile, function(err, features) {
+        if (err) return done(err);
+
+        var expectedWidth = fixture.width - options.shotOffset.right;
+        var expectedHeight = fixture.height - options.shotOffset.bottom;
+        features.width.should.equal(expectedWidth);
+        features.height.should.equal(expectedHeight);
+        done();
+      });
+    });
+  });
 });
+
 
 describe('Passing errors for bad input', function() {
   
-  it('Passes an error if an invalid extension is given', function(done) {
+  it('passes an error if an invalid extension is given', function(done) {
     this.timeout(20000);
 
     webshot('betabeat.com', 'output.xyz', function(err) {
@@ -223,7 +260,7 @@ describe('Passing errors for bad input', function() {
     });
   });
 
-  it('Passes an error if a misformatted address is given', function(done) { 
+  it('passes an error if a misformatted address is given', function(done) {
     this.timeout(20000);
 
     webshot('abcdefghijklmnop', 'google.png', function(err) {
@@ -232,7 +269,7 @@ describe('Passing errors for bad input', function() {
     });
   });
 
-  it('Passes an error if no webpage exists at the address', function(done) { 
+  it('passes an error if no webpage exists at the address', function(done) {
     this.timeout(20000);
 
     webshot('http://abc1234xyz123455555.com', testFile, function(err) {
@@ -241,6 +278,7 @@ describe('Passing errors for bad input', function() {
     });
   });
 });
+
 
 describe('Time out', function() {
   it('should time out', function(done) {
