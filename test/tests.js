@@ -138,6 +138,29 @@ describe('Handling screenshot dimension options', function() {
     });
   });
 
+  it('creates a properly-sized page for zoomed shots', function(done) {
+    this.timeout(20000);
+
+    var fixture = fixtures[0];
+    var options = {
+      shotSize: {
+        width: 'window'
+      , height: 'all'
+      },
+      zoomFactor: 2
+    };
+
+    webshot(fixture.path, testFile, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(testFile, function(err, features) {
+        features.width.should.equal(fixture.width);
+        features.height.should.equal(fixture.height);
+        done();
+      });
+    });
+  });
+
   it('creates a properly-sized image for partial shots', function(done) {
     this.timeout(20000);
 

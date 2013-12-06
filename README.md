@@ -145,6 +145,12 @@ An optional `options` object can be passed as the parameter directly preceding t
       </td>
     </tr>
     <tr>
+      <th>zoomFactor</th>
+      <td>undefined</td>
+      <td>When taking the screenshot, zooms the page according to the given factor. Defaults to 1 (ie. 100% zoom).
+      </td>
+    </tr>
+    <tr>
       <th>streamType</th>
       <td>'png'</td>
       <td>If streaming is used, this designates the file format of the streamed rendering. Possible values are
