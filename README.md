@@ -146,7 +146,7 @@ An optional `options` object can be passed as the parameter directly preceding t
     </tr>
     <tr>
       <th>zoomFactor</th>
-      <td>undefined</td>
+      <td>1.0</td>
       <td>When taking the screenshot, zooms the page according to the given factor. Defaults to 1 (ie. 100% zoom).
       </td>
     </tr>
