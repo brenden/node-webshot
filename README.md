@@ -121,9 +121,14 @@ An optional `options` object can be passed as the parameter directly preceding t
     </tr>
     <tr>
       <th>userAgent</th>
-      <td>undefined</td>
+      <td>null</td>
       <td>The <code>user-agent</code> string Phantom sends to the requested page. If left unset, the default
       Phantom <code>user-agent</code> will be used</td>
+    </tr>
+    <tr>
+      <th>customHeaders</th>
+      <td>null</td>
+      <td>Any additional headers to be sent in the HTTP request.</td>
     </tr>
     <tr>
       <th>script</th>
@@ -140,7 +145,7 @@ An optional `options` object can be passed as the parameter directly preceding t
     </tr>
     <tr>
       <th>paperSize</th>
-      <td>undefined</td>
+      <td>null</td>
       <td>When generating a PDF, sets page.paperSize. Some options are documented here: https://github.com/ariya/phantomjs/pull/15 Example: <code>{format: 'A4', orientation: 'portrait'}</code>
       </td>
     </tr>
