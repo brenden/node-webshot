@@ -160,8 +160,8 @@ An optional `options` object can be passed as the parameter directly preceding t
     <tr>
       <th>siteType</th>
       <td>'url'</td>
-      <td>siteType indicates whether the content needs to be requested ('url') or is being provided ('html'). Possible values are
-      'url' and 'html'.
+      <td>siteType indicates whether the content needs to be requested ('url'), loaded locally ('file'), or is being
+      provided directly as a string ('html').
       </td>
     </tr>
     <tr>

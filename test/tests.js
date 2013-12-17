@@ -46,6 +46,18 @@ describe('Creating screenshot images', function() {
     });
   });
 
+  it('takes a screenshot given a local path', function(done) {
+    this.timeout(20000);
+
+    webshot(__dirname + '/fixtures/2.html', testFile, {siteType:'file'}, function(err) {
+      if (err) return done(err);
+      fs.exists(testFile, function(exists) {
+        exists.should.equal(true);
+        done();
+      });
+    });
+  });
+
   it('overwrites existing screenshots', function(done) {
     this.timeout(20000);
 
