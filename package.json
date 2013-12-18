@@ -1,6 +1,6 @@
 {
   "name": "webshot",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Easy website screenshots",
   "author": "Brenden Kokoszka",
   "contributors": [
@@ -19,6 +19,9 @@
     "url": "http://github.com/brenden/node-webshot.git"
   },
   "engine": [ "node >=0.7.00" ],
+  "dependencies": {
+    "tmp": "~0.0.23"
+  },
   "optionalDependencies": {
     "phantomjs": "~1.9.0-1"
   },

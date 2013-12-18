@@ -46,6 +46,19 @@ describe('Creating screenshot images', function() {
     });
   });
 
+  it('handles very large html strings', function(done) {
+    this.timeout(20000);
+    var longString = Array(900000).join('x');
+
+    webshot(longString, testFile, {siteType:'html'}, function(err) {
+      if (err) return done(err);
+      fs.exists(testFile, function(exists) {
+        exists.should.equal(true);
+        done();
+      });
+    });
+  });
+
   it('takes a screenshot given a local path', function(done) {
     this.timeout(20000);
 
