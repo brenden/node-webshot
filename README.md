@@ -205,6 +205,9 @@ Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be 
 ## Running on Heroku
 [See this comment.](https://github.com/brenden/node-webshot/issues/25#issuecomment-23019665)
 
+## Grunt
+[grunt-webshot](https://npmjs.org/package/grunt-webshot) is a Grunt wrapper for this package.
+
 ## License
 (The MIT License)
 
