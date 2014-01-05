@@ -36,6 +36,7 @@ describe('Creating screenshot images', function() {
 
   it('takes a screenshot of the provided html', function(done) {
     this.timeout(20000);
+    var testFile = '/tmp/foo.png';
 
     webshot('<html><body>This is a test</body></html>', testFile, {siteType:'html'}, function(err) {
       if (err) return done(err);
@@ -48,7 +49,8 @@ describe('Creating screenshot images', function() {
 
   it('handles very large html strings', function(done) {
     this.timeout(20000);
-    var longString = Array(900000).join('x');
+    var longString = Array(900000).join(' ');
+    var testFile = '/tmp/bar.png';
 
     webshot(longString, testFile, {siteType:'html'}, function(err) {
       if (err) return done(err);
@@ -88,7 +90,7 @@ describe('Creating screenshot images', function() {
             done();
           });
         });
-      }, 100);
+      }, 1000);
     });
   });
 
@@ -132,7 +134,7 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot('flickr.com', testFile, options, function(err) {
+    webshot('google.com', testFile, options, function(err) {
       if (err) return done(err);
 
       im.identify(testFile, function(err, features) {
@@ -153,7 +155,7 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot('flickr.com', testPDF, options, function(err) {
+    webshot('example.com', testPDF, options, function(err) {
       if (err) return done(err);
 
       im.identify(testPDF, function(err, features) {
@@ -204,7 +206,7 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot('flickr.com', testFile, options, function(err) {
+    webshot('google.com', testFile, options, function(err) {
       if (err) return done(err);
 
       im.identify(testFile, function(err, features) {
