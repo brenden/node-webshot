@@ -2,7 +2,7 @@ var webshot = require('../lib/webshot')
   , should = require('should')
   , fs = require('fs')
   , im = require('imagemagick')
-  , testFile = __dirname + '/test.png'
+  , testPNG= __dirname + '/test.png'
   , testPDF = __dirname + '/test.pdf';
 
 // Some test documents
@@ -19,15 +19,14 @@ var fixtures = [
   }
 ];
 
-
 describe('Creating screenshot images', function() {
   it('creates a screenshot', function(done) {
     this.timeout(20000);
 
-    webshot('google.com', testFile, function(err) {
+    webshot('google.com', testPNG, function(err) {
       if (err) return done(err);
 
-      fs.exists(testFile, function(exists) {
+      fs.exists(testPNG, function(exists) {
         exists.should.equal(true);
         done();
       });
@@ -36,11 +35,10 @@ describe('Creating screenshot images', function() {
 
   it('takes a screenshot of the provided html', function(done) {
     this.timeout(20000);
-    var testFile = '/tmp/foo.png';
 
-    webshot('<html><body>This is a test</body></html>', testFile, {siteType:'html'}, function(err) {
+    webshot('<html><body>This is a test</body></html>', testPNG, {siteType:'html'}, function(err) {
       if (err) return done(err);
-      fs.exists(testFile, function(exists) {
+      fs.exists(testPNG, function(exists) {
         exists.should.equal(true);
         done();
       });
@@ -50,11 +48,10 @@ describe('Creating screenshot images', function() {
   it('handles very large html strings', function(done) {
     this.timeout(20000);
     var longString = Array(900000).join(' ');
-    var testFile = '/tmp/bar.png';
 
-    webshot(longString, testFile, {siteType:'html'}, function(err) {
+    webshot(longString, testPNG, {siteType:'html'}, function(err) {
       if (err) return done(err);
-      fs.exists(testFile, function(exists) {
+      fs.exists(testPNG, function(exists) {
         exists.should.equal(true);
         done();
       });
@@ -64,9 +61,10 @@ describe('Creating screenshot images', function() {
   it('takes a screenshot given a local path', function(done) {
     this.timeout(20000);
 
-    webshot(__dirname + '/fixtures/2.html', testFile, {siteType:'file'}, function(err) {
+    webshot(__dirname + '/fixtures/2.html', testPNG, {siteType:'file'},
+      function(err) {
       if (err) return done(err);
-      fs.exists(testFile, function(exists) {
+      fs.exists(testPNG, function(exists) {
         exists.should.equal(true);
         done();
       });
@@ -76,45 +74,45 @@ describe('Creating screenshot images', function() {
   it('overwrites existing screenshots', function(done) {
     this.timeout(20000);
 
-    fs.stat(testFile, function (err, initial) {
+    webshot('google.com', testPNG, function(err) {
       if (err) return done(err);
 
-      setTimeout(function() {
-        webshot('google.com', testFile, function(err) {
-          if (err) return done(err);
+      fs.stat(testPNG, function (err, initial) {
+        if (err) return done(err);
 
-          fs.stat(testFile, function (err, overwritten) {
+        setTimeout(function() {
+          webshot('google.com', testPNG, function(err) {
             if (err) return done(err);
 
-            initial.mtime.should.be.below(overwritten.mtime);
-            done();
+            fs.stat(testPNG, function (err, overwritten) {
+              if (err) return done(err);
+
+              initial.mtime.should.be.below(overwritten.mtime);
+              done();
+            });
           });
-        });
-      }, 1000);
+        }, 1000);
+      });
     });
   });
 
   it('streams a screenshot', function(done) {
     this.timeout(20000);
 
-    fs.unlink(testFile, function(err) {
+    webshot('google.com', function(err, renderStream) {
       if (err) return done(err);
 
-      webshot('google.com', function(err, renderStream) {
-        if (err) return done(err);
+      var file = fs.createWriteStream(testPNG, {encoding: 'binary'});
 
-        var file = fs.createWriteStream(testFile, {encoding: 'binary'});
+      renderStream.on('data', function(data) {
+        file.write(data.toString('binary'), 'binary');
+      });
 
-        renderStream.on('data', function(data) {
-          file.write(data.toString('binary'), 'binary');
-        });
-
-        renderStream.on('end', function() {
-          im.identify(testFile, function(err, features) {
-            features.width.should.be.above(0);
-            features.height.should.be.above(0);
-            done();
-          });
+      renderStream.on('end', function() {
+        im.identify(testPNG, function(err, features) {
+          features.width.should.be.above(0);
+          features.height.should.be.above(0);
+          done();
         });
       });
     });
@@ -134,10 +132,10 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot('google.com', testFile, options, function(err) {
+    webshot('google.com', testPNG, options, function(err) {
       if (err) return done(err);
 
-      im.identify(testFile, function(err, features) {
+      im.identify(testPNG, function(err, features) {
         features.width.should.equal(options.windowSize.width);
         features.height.should.equal(options.windowSize.height);
         done();
@@ -177,10 +175,10 @@ describe('Handling screenshot dimension options', function() {
       zoomFactor: 2
     };
 
-    webshot(fixture.path, testFile, options, function(err) {
+    webshot(fixture.path, testPNG, options, function(err) {
       if (err) return done(err);
 
-      im.identify(testFile, function(err, features) {
+      im.identify(testPNG, function(err, features) {
         features.width.should.equal(fixture.width);
         features.height.should.equal(fixture.height);
         done();
@@ -206,10 +204,10 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot('google.com', testFile, options, function(err) {
+    webshot('google.com', testPNG, options, function(err) {
       if (err) return done(err);
 
-      im.identify(testFile, function(err, features) {
+      im.identify(testPNG, function(err, features) {
         if (err) return done(err);
 
         features.width.should.equal(options.shotSize.width);
@@ -230,10 +228,10 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot(fixture.path, testFile, options, function(err) {
+    webshot(fixture.path, testPNG, options, function(err) {
       if (err) return done(err);
 
-      im.identify(testFile, function(err, features) {
+      im.identify(testPNG, function(err, features) {
         if (err) return done(err);
 
         features.width.should.equal(fixture.width);
@@ -254,10 +252,10 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot(fixture.path, testFile, options, function(err) {
+    webshot(fixture.path, testPNG, options, function(err) {
       if (err) return done(err);
 
-      im.identify(testFile, function(err, features) {
+      im.identify(testPNG, function(err, features) {
         if (err) return done(err);
 
         features.width.should.equal(fixture.width);
@@ -282,10 +280,10 @@ describe('Handling screenshot dimension options', function() {
       }
     };
 
-    webshot(fixture.path, testFile, options, function(err) {
+    webshot(fixture.path, testPNG, options, function(err) {
       if (err) return done(err);
 
-      im.identify(testFile, function(err, features) {
+      im.identify(testPNG, function(err, features) {
         if (err) return done(err);
 
         var expectedWidth = fixture.width - options.shotOffset.right;
@@ -322,7 +320,7 @@ describe('Passing errors for bad input', function() {
   it('passes an error if no webpage exists at the address', function(done) {
     this.timeout(20000);
 
-    webshot('http://abc1234xyz123455555.com', testFile, function(err) {
+    webshot('http://abc1234xyz123455555.com', testPNG, function(err) {
       should.exist(err);
       done();
     });
@@ -340,7 +338,7 @@ describe('Time out', function() {
       timeout: 3000
     };
 
-    webshot(fixtures[0].path, testFile, options, function(err) {
+    webshot(fixtures[0].path, testPNG, options, function(err) {
       should.exist(err);
       should.equal(err.message, 'PhantomJS did not respond within the given timeout setting.');
       done();
@@ -363,10 +361,10 @@ describe('Handling miscellaneous options', function() {
 
     this.timeout(20000);
 
-    webshot('google.com', testFile, function(err) {
+    webshot('google.com', testPNG, function(err) {
       if (err) return done(err);
 
-      fs.exists(testFile, function(exists) {
+      fs.exists(testPNG, function(exists) {
         exists.should.equal(true);
         done();
       });
@@ -380,13 +378,20 @@ describe('Handling miscellaneous options', function() {
 
     this.timeout(20000);
 
-    webshot('google.com', testFile, function(err) {
+    webshot('google.com', testPNG, function(err) {
       if (err) return done(err);
 
-      fs.exists(testFile, function(exists) {
+      fs.exists(testPNG, function(exists) {
         exists.should.equal(true);
         done();
       });
     });
   });
+});
+
+afterEach(function(done) {
+  [testPNG, testPDF].forEach(function(path) {
+    try { fs.unlinkSync(path); } catch(err) {}
+  });
+  done();
 });
