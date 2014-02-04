@@ -23,7 +23,7 @@
     "tmp": "~0.0.23"
   },
   "optionalDependencies": {
-    "phantomjs": "~1.9.0-1"
+    "phantomjs": "~1.9.7-1"
   },
   "devDependencies": {
     "mocha" : "*",
