@@ -28,6 +28,7 @@ Alternately, the screenshot can be streamed back to the caller:
 
 ```javascript
 var webshot = require('webshot');
+var fs      = require('fs');
 
 webshot('google.com', function(err, renderStream) {
   var file = fs.createWriteStream('google.png', {encoding: 'binary'});
