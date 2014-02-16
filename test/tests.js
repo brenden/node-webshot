@@ -361,7 +361,7 @@ describe('Handling miscellaneous options', function() {
 
     this.timeout(20000);
 
-    webshot('google.com', testPNG, function(err) {
+    webshot('google.com', testPNG, options, function(err) {
       if (err) return done(err);
 
       fs.exists(testPNG, function(exists) {
@@ -378,7 +378,7 @@ describe('Handling miscellaneous options', function() {
 
     this.timeout(20000);
 
-    webshot('google.com', testPNG, function(err) {
+    webshot('google.com', testPNG, options, function(err) {
       if (err) return done(err);
 
       fs.exists(testPNG, function(exists) {
