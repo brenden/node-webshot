@@ -140,6 +140,11 @@ the callback in a call to webshot.
       before a screenshot is taken.</td>
     </tr>
     <tr>
+      <th>onInitialized</th>
+      <td>undefined</td>
+      <td>Like script, but run before the scripts included in the webpage.</td>
+    </tr>
+    <tr>
       <th>defaultWhiteBackground</th>
       <td>false</td>
       <td>When taking the screenshot, adds a white background if not defined
