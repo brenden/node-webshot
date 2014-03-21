@@ -117,6 +117,28 @@ describe('Creating screenshot images', function() {
       });
     });
   });
+
+
+  it('streams a screenshot with JS errors on the page', function(done) {
+
+    webshot('<html><body><script>var a.b = "test";</script></body></html>', null, {siteType:'html'},function(err, renderStream) {
+      if (err) return done(err);
+
+      var file = fs.createWriteStream(testPNG, {encoding: 'binary'});
+
+      renderStream.on('data', function(data) {
+        file.write(data.toString('binary'), 'binary');
+      });
+
+      renderStream.on('end', function() {
+        im.identify(testPNG, function(err, features) {
+          features.width.should.be.above(0);
+          features.height.should.be.above(0);
+          done();
+        });
+      });
+    });
+  });
 });
 
 
