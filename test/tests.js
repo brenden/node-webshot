@@ -119,7 +119,7 @@ describe('Creating screenshot images', function() {
   });
 
 
-  it('streams a screenshot with JS errors on the page', function(done) {
+  it('streams a screenshot even if there are JS errors on the page', function(done) {
 
     webshot('<html><body><script>var a.b = "test";</script></body></html>', null, {siteType:'html'},function(err, renderStream) {
       if (err) return done(err);
