@@ -151,6 +151,12 @@ the callback in a call to webshot.
       elsewhere.</td>
     </tr>
     <tr>
+      <th>quality</th>
+      <td>75</td>
+      <td>JPEG compression quality. A higher number will look better, but creates
+        a larger file. Quality setting has no effect when streaming.</td>
+    </tr>
+    <tr>
       <th>streamType</th>
       <td>'png'</td>
       <td>If streaming is used, this designates the file format of the streamed
