@@ -133,18 +133,6 @@ the callback in a call to webshot.
       <td>Any additional headers to be sent in the HTTP request.</td>
     </tr>
     <tr>
-      <th>script</th>
-      <td>undefined</td>
-      <td>An arbitrary function to be executed on the requested page. The script
-      executes within the page's context and can be used to modify the page
-      before a screenshot is taken.</td>
-    </tr>
-    <tr>
-      <th>onInitialized</th>
-      <td>undefined</td>
-      <td>Like script, but run before the scripts included in the webpage.</td>
-    </tr>
-    <tr>
       <th>defaultWhiteBackground</th>
       <td>false</td>
       <td>When taking the screenshot, adds a white background if not defined
