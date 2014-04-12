@@ -133,18 +133,6 @@ the callback in a call to webshot.
       <td>Any additional headers to be sent in the HTTP request.</td>
     </tr>
     <tr>
-      <th>script</th>
-      <td>undefined</td>
-      <td>An arbitrary function to be executed on the requested page. The script
-      executes within the page's context and can be used to modify the page
-      before a screenshot is taken.</td>
-    </tr>
-    <tr>
-      <th>onInitialized</th>
-      <td>undefined</td>
-      <td>Like script, but run before the scripts included in the webpage.</td>
-    </tr>
-    <tr>
       <th>defaultWhiteBackground</th>
       <td>false</td>
       <td>When taking the screenshot, adds a white background if not defined
@@ -190,10 +178,50 @@ the callback in a call to webshot.
   </tbody>
 </table>
 
+### Phantom page properties
 In addition to these options, the following options can be specified and will be
 passed to the [Phantom page
 object](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage):
 `paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`.
+
+### Phantom callbacks
+Arbitrary scripts can be run on the page before it gets rendered by using any of
+Phantom's [page callbacks](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#callbacks-list),
+such as `onLoadFinished` or `onResourceRequested`. For example, the script below
+changes the text of every link on the page:
+
+```javascript
+var options = {
+  onLoadFinished: function() {
+    var links = document.getElementsByTagName('a');
+
+    for (var i=0; i<links.length; i++) {
+      var link = links[i];
+      link.innerHTML = 'My custom text';
+    } 
+  }
+}
+```
+
+Note that the script will be serialized and then passed to Phantom as text, so all
+variable scope information will be lost. However, variables from the caller can be 
+passed into the script as follows:
+
+```javascript
+var options = {
+  onLoadFinished: {
+    fn: function() {
+      var links = document.getElementsByTagName('a');
+
+      for (var i=0; i<links.length; i++) {
+        var link = links[i];
+        link.innerHTML = this.foo;
+      } 
+    }
+  , context: {foo: 'My custom text'}
+  }
+}
+```
 
 ## Tests
 Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be
