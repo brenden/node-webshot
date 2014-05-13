@@ -409,6 +409,35 @@ describe('Handling miscellaneous options', function() {
       });
     });
   });
+
+  it('screenshots a non-200 page status if errorIfStatusIsNot200 not set', function(done) {
+    var options = {
+    };
+
+    this.timeout(20000);
+
+    webshot('google.com/404-page-for-webshot-tests', testPNG, options, function(err) {
+      fs.exists(testPNG, function(exists) {
+        exists.should.equal(true);
+        done();
+      });
+    });
+  });
+
+  it('errors on non-200 page status if errorIfStatusIsNot200 set', function(done) {
+    var options = {
+      errorIfStatusIsNot200: true
+    };
+
+    this.timeout(20000);
+
+    webshot('google.com/404-page-for-webshot-tests', testPNG, options, function(err) {
+      fs.exists(testPNG, function(exists) {
+        exists.should.equal(false);
+        done();
+      });
+    });
+  });
 });
 
 afterEach(function(done) {

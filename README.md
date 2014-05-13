@@ -175,6 +175,11 @@ the callback in a call to webshot.
       <td>Wait for the web page to signal to webshot when to take the photo
       using <code>window.callPhantom('takeShot');</code></td>
     </tr>
+    <tr>
+      <th>errorIfStatusIsNot200</th>
+      <td>false</td>
+      <td>If the loaded page has a non-200 status code, don't take a screenshot, cause an error instead.</td>
+    </tr>
   </tbody>
 </table>
 
