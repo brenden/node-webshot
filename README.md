@@ -139,6 +139,11 @@ the callback in a call to webshot.
       elsewhere.</td>
     </tr>
     <tr>
+      <th>customCSS</th>
+      <td>''</td>
+      <td>When taking the screenshot, adds custom CSS rules if defined.</td>
+    </tr>
+    <tr>
       <th>quality</th>
       <td>75</td>
       <td>JPEG compression quality. A higher number will look better, but creates
