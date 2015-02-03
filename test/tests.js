@@ -202,7 +202,7 @@ describe('Handling screenshot dimension options', function() {
 
       im.identify(testPNG, function(err, features) {
         features.width.should.equal(fixture.width);
-        features.height.should.equal(fixture.height);
+        features.height.should.equal(fixture.height * 2);
         done();
       });
     });
