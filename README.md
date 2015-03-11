@@ -126,7 +126,7 @@ the callback in a call to webshot.
       <th>phantomConfig</th>
       <td>{}</td>
       <td>Object with key value pairs corresponding to phantomjs <a
-      href="https://github.com/ariya/phantomjs/wiki/API-Reference#command-line-options">command
+      href="http://phantomjs.org/api/command-line.html">command
       line options</a>. Don't include `--`. For example:
       `phantomConfig: {'ignore-ssl-errors': 'true'}`</td>
     </tr>
