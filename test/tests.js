@@ -96,32 +96,48 @@ describe('Creating screenshot images', function() {
     });
   });
 
-  it('streams a screenshot', function(done) {
+ it('streams a screenshot', function(done) {
     this.timeout(20000);
 
-    webshot('google.com', function(err, renderStream) {
-      if (err) return done(err);
+    var renderStream = webshot('google.com');
+    var file = fs.createWriteStream(testPNG, {encoding: 'binary'});
 
-      var file = fs.createWriteStream(testPNG, {encoding: 'binary'});
+    renderStream.on('data', function(data) {
+      file.write(data.toString('binary'), 'binary');
+    });
 
-      renderStream.on('data', function(data) {
-        file.write(data.toString('binary'), 'binary');
-      });
-
-      renderStream.on('end', function() {
-        im.identify(testPNG, function(err, features) {
-          features.width.should.be.above(0);
-          features.height.should.be.above(0);
-          done();
-        });
+    renderStream.on('end', function() {
+      im.identify(testPNG, function(err, features) {
+        features.width.should.be.above(0);
+        features.height.should.be.above(0);
+        done();
       });
     });
   });
 
 
   it('streams a screenshot even if there are JS errors on the page', function(done) {
+    var badHTML = '<html><body><script>var a.b = "test";</script></body></html>';
+    var renderStream = webshot(badHTML, {siteType:'html'});
+    var file = fs.createWriteStream(testPNG, {encoding: 'binary'});
 
-    webshot('<html><body><script>var a.b = "test";</script></body></html>', null, {siteType:'html'},function(err, renderStream) {
+    renderStream.on('data', function(data) {
+      file.write(data.toString('binary'), 'binary');
+    });
+
+    renderStream.on('end', function() {
+      im.identify(testPNG, function(err, features) {
+        features.width.should.be.above(0);
+        features.height.should.be.above(0);
+        done();
+      });
+    });
+  });
+
+  it('streams a screenshot with the old callback interface', function(done) {
+    this.timeout(20000);
+
+    webshot('google.com', function(err, renderStream) {
       if (err) return done(err);
 
       var file = fs.createWriteStream(testPNG, {encoding: 'binary'});
