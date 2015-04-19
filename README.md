@@ -131,6 +131,11 @@ the callback in a call to webshot.
       `phantomConfig: {'ignore-ssl-errors': 'true'}`</td>
     </tr>
     <tr>
+      <th>cookies</th>
+      <td>[]</td>
+      <td>List of cookie objects to use, or null to disable cookies.</td>
+    </tr>
+    <tr>
       <th>customHeaders</th>
       <td>null</td>
       <td>Any additional headers to be sent in the HTTP request.</td>
