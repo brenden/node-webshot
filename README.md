@@ -32,12 +32,11 @@ Alternately, the screenshot can be streamed back to the caller:
 var webshot = require('webshot');
 var fs      = require('fs');
 
-webshot('google.com', function(err, renderStream) {
-  var file = fs.createWriteStream('google.png', {encoding: 'binary'});
+var renderStream = webshot('google.com');
+var file = fs.createWriteStream('google.png', {encoding: 'binary'});
 
-  renderStream.on('data', function(data) {
-    file.write(data.toString('binary'), 'binary');
-  });
+renderStream.on('data', function(data) {
+  file.write(data.toString('binary'), 'binary');
 });
 ```
 
