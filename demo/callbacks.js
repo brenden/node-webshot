@@ -14,7 +14,7 @@ var options = {
   }
 };
 
-webshot('flickr.com', './flickr.png', options, function(err) {
+webshot('www.flickr.com', './flickr.png', options, function(err) {
   if (err) return console.log(err);
   console.log('OK');
 });
