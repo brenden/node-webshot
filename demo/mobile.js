@@ -13,7 +13,7 @@ var options = {
     + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 };
 
-webshot('facebook.com', './facebook.png', options, function(err) {
+webshot('https://facebook.com', './facebook.png', options, function(err) {
   if (err) return console.log(err);
   console.log('OK');
 });

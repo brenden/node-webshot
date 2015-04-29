@@ -363,23 +363,48 @@ describe('Passing errors for bad input', function() {
       done();
     });
   });
+
+  it('throws an error when called syncronously with invalid input', function(done) {
+    this.timeout(20000);
+
+    try {
+      var renderStream = webshot('google.com', {siteType: 'abc'});
+    } catch (err) {
+      done();
+    }
+  });
 });
 
 
 describe('Time out', function() {
+
+  // If the render delay is larger than the timeout delay, the timeout should be triggered.
+  var options = {
+    renderDelay: 10000,
+    timeout: 3000
+  };
+
+  var timeoutErrorMessage = 'PhantomJS did not respond within the given timeout setting.';
+
   it('should time out', function(done) {
     this.timeout(20000);
 
-    // If the render delay is larger than the timeout delay, the timeout should be triggered.
-    var options = {
-      renderDelay: 10000,
-      timeout: 3000
-    };
-
     webshot(fixtures[0].path, testPNG, options, function(err) {
       should.exist(err);
-      should.equal(err.message, 'PhantomJS did not respond within the given timeout setting.');
+      should.equal(err.message, timeoutErrorMessage);
       done();
+    });
+  });
+
+  it('streams an error on a streaming timeout', function(done) {
+    this.timeout(20000);
+
+    var renderStream = webshot('google.com', options);
+
+    renderStream.on('error', function(err) {
+        should.exist(err);
+        should.equal(err.message, timeoutErrorMessage);
+        done();
     });
   });
 });
