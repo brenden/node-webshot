@@ -197,6 +197,11 @@ the callback in a call to webshot.
       <td>false</td>
       <td>If a script on the page throws an exception, don't take a screenshot, cause an error instead.</td>
     </tr>
+    <tr>
+      <th>captureSelector</th>
+      <td>false</td>
+      <td>Captures the page area containing the provided selector and saves it to file.</td>
+    </tr>
   </tbody>
 </table>
 
