@@ -56,7 +56,7 @@ var options = {
   }
 , userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)'
     + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
-}
+};
 
 webshot('flickr.com', 'flickr.jpeg', options, function(err) {
   // screenshot now saved to flickr.jpeg
@@ -220,7 +220,7 @@ var options = {
       link.innerHTML = 'My custom text';
     } 
   }
-}
+};
 ```
 
 Note that the script will be serialized and then passed to Phantom as text, so all
@@ -240,7 +240,7 @@ var options = {
     }
   , context: {foo: 'My custom text'}
   }
-}
+};
 ```
 
 ## Tests
