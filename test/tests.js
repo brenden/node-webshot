@@ -845,6 +845,7 @@ describe('Handling miscellaneous options', function() {
       });
     });
   });
+<<<<<<< HEAD
 });
 
   it('screenshots the page area containing the provided selector', function(done) {
@@ -867,6 +868,8 @@ describe('Handling miscellaneous options', function() {
       });
     });
   });
+=======
+>>>>>>> f6e49758be24a0db172244302358794003f1ae6e
 });
 >>>>>>> uncommented tests
 
