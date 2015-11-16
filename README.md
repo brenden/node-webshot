@@ -193,14 +193,11 @@ the callback in a call to webshot.
       <td>If the loaded page has a non-200 status code, don't take a screenshot, cause an error instead.</td>
     </tr>
     <tr>
-<<<<<<< HEAD
       <th>errorIfJSException</th>
       <td>false</td>
       <td>If a script on the page throws an exception, don't take a screenshot, cause an error instead.</td>
     </tr>
     <tr>
-=======
->>>>>>> f6e49758be24a0db172244302358794003f1ae6e
       <th>captureSelector</th>
       <td>false</td>
       <td>Captures the page area containing the provided selector and saves it to file.</td>

@@ -845,33 +845,7 @@ describe('Handling miscellaneous options', function() {
       });
     });
   });
-<<<<<<< HEAD
 });
-
-  it('screenshots the page area containing the provided selector', function(done) {
-    this.timeout(20000);
-
-    var fixture = fixtures[2];
-    var options = {
-      captureSelector: '#foo'
-    };
-
-    webshot(fixture.path, testPNG, options, function(err) {
-      if (err) return done(err);
-
-      im.identify(testPNG, function(err, features) {
-        if (err) return done(err);
-
-        features.width.should.equal(fixture.width);
-        features.height.should.equal(fixture.height);
-        done();
-      });
-    });
-  });
-=======
->>>>>>> f6e49758be24a0db172244302358794003f1ae6e
-});
->>>>>>> uncommented tests
 
 afterEach(function(done) {
   [testPNG, testPDF].forEach(function(path) {
