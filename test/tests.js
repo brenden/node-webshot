@@ -523,6 +523,28 @@ describe('Handling miscellaneous options', function() {
       });
     });
   });
+
+  it('creates a properly-sized page for zoomed shots of with selector', function(done) {
+    this.timeout(20000);
+
+    var fixture = fixtures[2];
+    var options = {
+      captureSelector: '#foo',
+      zoomFactor: 2
+    };
+
+    webshot(fixture.path, testPNG, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(testPNG, function(err, features) {
+        if (err) return done(err);
+
+        features.width.should.equal(fixture.width * 2);
+        features.height.should.equal(fixture.height * 2);
+        done();
+      });
+    })
+  });
 });
 
 afterEach(function(done) {
