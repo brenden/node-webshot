@@ -27,7 +27,7 @@
     "tmp": "~0.0.25"
   },
   "optionalDependencies": {
-    "phantomjs": "~1.9.7-1"
+    "phantomjs": "^2.1.2"
   },
   "devDependencies": {
     "imagemagick": "git://github.com/rsms/node-imagemagick.git",
