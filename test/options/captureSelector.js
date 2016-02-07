@@ -7,6 +7,7 @@ var webshot = require('../../lib/webshot')
   , fixtures = helper.fixtures;
 
 describe('captureSelector', function() {
+  this.timeout(20000);
 
   it('screenshots the page matching the selector', function(done) {
     var fixture = fixtures[2];
