@@ -16,5 +16,12 @@ exports.fixtures = [
   }
 ];
 
-exports.pngOutput = __dirname + '/test.png';
-exports.pdfOutput = __dirname + '/test.pdf';
+var pngOutput = exports.pngOutput = __dirname + '/test.png';
+var pdfOutput = exports.pdfOutput = __dirname + '/test.pdf';
+
+afterEach(function(done) {
+  [pngOutput, pdfOutput].forEach(function(path) {
+    try { fs.unlinkSync(path); } catch(err) {}
+  });
+  done();
+});
