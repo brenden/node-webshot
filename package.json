@@ -36,7 +36,7 @@
   },
   "main": "./lib/webshot.js",
   "scripts": {
-    "test": "mocha --ui bdd --reporter spec --require should --globals i ./test/core.js"
+    "test": "mocha --ui bdd --reporter spec --require should ./test/core.js ./test/options/*"
   },
   "keywords": [
     "screenshot",
