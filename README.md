@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/brenden/node-webshot.svg?branch=master)](https://travis-ci.org/brenden/node-webshot)
 # node-webshot
 
 Webshot provides a simple API for taking webpage screenshots. The module is a
