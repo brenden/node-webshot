@@ -29,4 +29,26 @@ describe('zoomFactor', function() {
       });
     });
   });
+
+  it('creates a properly-sized page for zoomed shots that use a selector',
+      function(done) {
+
+    var fixture = fixtures[2];
+    var options = {
+      captureSelector: '#foo',
+      zoomFactor: 2
+    };
+
+    webshot(fixture.path, pngOutput, options, function(err) {
+      if (err) return done(err);
+
+      im.identify(pngOutput, function(err, features) {
+        if (err) return done(err);
+
+        features.width.should.equal(fixture.width * 2);
+        features.height.should.equal(fixture.height * 2);
+        done();
+      });
+    })
+  });
 });
