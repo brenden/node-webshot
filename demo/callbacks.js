@@ -10,11 +10,11 @@ var options = {
         tag.innerHTML = 'The loading status of this page is: ' + status;
       }
     }
-  , context: {tagToReplace: 'h2'}
+  , context: {tagToReplace: 'h1'}
   }
 };
 
-webshot('www.flickr.com', './flickr.png', options, function(err) {
+webshot('www.example.org', './example.png', options, function(err) {
   if (err) return console.log(err);
   console.log('OK');
 });
