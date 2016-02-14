@@ -254,6 +254,23 @@ var options = {
 };
 ```
 
+### Override options in takeShotOnCallback
+When using the takeShotOnCallback option, the page can override the options by
+providing an object instead of the string as follows:
+
+```javascript
+window.callPhantom({
+    event: 'takeShot',
+    options: {
+        shotSize: {
+            width: document.getElementsByTagName('html')[0].offsetWidth,
+            height: document.getElementsByTagName('html')[0].offsetHeight
+        }
+    }
+});
+```
+In this example the shot size will be set to the real size of the document.
+
 ## Tests
 Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be
 run with `npm test`. The tests use [node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require
