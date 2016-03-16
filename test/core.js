@@ -122,6 +122,27 @@ describe('Passing errors for bad input', function() {
     });
   });
 
+  it('passes an error if no webpage exists with stream output', function(done) {
+    webshot('http://abc1234xyz123455555.com', { errorIfStatusIsNot200: true })
+      .on('error', function (err) {
+        should.exist(err);
+        done();
+      })
+      .on('end', function () {
+        done(new Error('Should have emitted error'));
+      });
+  });
+
+  it('passes an error if no webpage exists with stream callback', function(done) {
+    webshot(
+      'http://abc1234xyz123455555.com',
+      { errorIfStatusIsNot200: true },
+      function (err) {
+        should.exist(err);
+        done();
+      });
+  });
+
   it('throws an error when called syncronously with invalid input',
       function(done) {
     try {
