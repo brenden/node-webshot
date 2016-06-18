@@ -19,6 +19,8 @@ exports.fixtures = [
 var pngOutput = exports.pngOutput = __dirname + '/test.png';
 var pdfOutput = exports.pdfOutput = __dirname + '/test.pdf';
 
+var fs = require('fs');
+
 afterEach(function(done) {
   [pngOutput, pdfOutput].forEach(function(path) {
     try { fs.unlinkSync(path); } catch(err) {}
