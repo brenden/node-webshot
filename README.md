@@ -41,6 +41,27 @@ renderStream.on('data', function(data) {
 });
 ```
 
+An example using a buffer to store the image temporarily instead of a file:
+
+```javascript
+var webshot = require('webshot');
+var fs      = require('fs');
+var lwip    = require('lwip');
+
+var renderStream = webshot('google.com');
+var buffer = new Buffer('')
+
+renderStream.on('data', function(data) {
+  buffer = concat([buffer, data])
+});
+renderStream.on('end', function(){
+  // do whatever you want with your buffer
+  fs.writeFileSync('/my-folder/my-image.png', buffer, {encoding:'base64'}) // save it as file
+  console.log('<img alt="My Screenshot" src="data:image/png;base64,'+buffer.toString()+'" />') // print the inline html image code
+  lwip.open(buffer, 'png', function(err, image){}) // open it for further modification using lwip
+}
+```
+
 An example showing how to take a screenshot of a site's mobile version:
 
 ```javascript
