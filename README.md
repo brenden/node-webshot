@@ -26,7 +26,21 @@ webshot('<html><body>Hello World</body></html>', 'hello_world.png', {siteType:'h
   // screenshot now saved to hello_world.png
 });
 ```
+Alternately, if phantomJS is not already installed:
+```
+npm install phantomjs --save
+```
 
+```javascript
+var webshot = require('webshot');
+var options = {
+  phantomPath: './node_modules/phantomjs/bin/phantomjs'
+}
+
+webshot('google.com', 'google.png', options, function(err) {
+  // screenshot now saved to google.png 
+});
+```
 Alternately, the screenshot can be streamed back to the caller:
 
 ```javascript
