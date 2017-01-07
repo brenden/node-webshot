@@ -199,6 +199,11 @@ the callback in a call to webshot.
       <td>If a script on the page throws an exception, don't take a screenshot, cause an error instead.</td>
     </tr>
     <tr>
+      <th>exportConsoleOutput</th>
+      <td>false</td>
+      <td>Log the console output from the page.</td>
+    </tr>
+    <tr>
       <th>captureSelector</th>
       <td>false</td>
       <td>Captures the page area containing the provided selector and saves it to file.</td>
@@ -229,13 +234,13 @@ var options = {
     for (var i=0; i<links.length; i++) {
       var link = links[i];
       link.innerHTML = 'My custom text';
-    } 
+    }
   }
 };
 ```
 
 Note that the script will be serialized and then passed to Phantom as text, so all
-variable scope information will be lost. However, variables from the caller can be 
+variable scope information will be lost. However, variables from the caller can be
 passed into the script as follows:
 
 ```javascript
@@ -247,7 +252,7 @@ var options = {
       for (var i=0; i<links.length; i++) {
         var link = links[i];
         link.innerHTML = this.foo;
-      } 
+      }
     }
   , context: {foo: 'My custom text'}
   }
