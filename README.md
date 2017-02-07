@@ -47,7 +47,7 @@ An example showing how to take a screenshot of a site's mobile version:
 var webshot = require('webshot');
 
 var options = {
-  screenSize: {
+  windowSize: {
     width: 320
   , height: 480
   }
