@@ -9,6 +9,19 @@ var webshot = require('../../lib/webshot')
 describe('siteType', function() {
   this.timeout(20000);
 
+  it('takes a screenshot of the provided buffer', function(done) {
+    webshot(new Buffer('<html><body>This is a test</body></html>'),
+            pngOutput,
+            {siteType: 'html', htmlEncoding: null},
+            function(err) {
+      if (err) return done(err);
+      fs.exists(pngOutput, function(exists) {
+        exists.should.equal(true);
+        done();
+      });
+    });
+  });
+
   it('takes a screenshot of the provided html', function(done) {
     webshot('<html><body>This is a test</body></html>',
             pngOutput,

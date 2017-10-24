@@ -167,8 +167,8 @@ the callback in a call to webshot.
       <th>siteType</th>
       <td>'url'</td>
       <td>siteType indicates whether the content needs to be requested ('url'),
-      loaded locally ('file'), or is being provided directly as a string
-      ('html').</td>
+      loaded locally ('file'), or is being provided directly as a string or
+      buffer, see htmlEncoding option ('html').</td>
     </tr>
     <tr>
       <th>renderDelay</th>
@@ -202,6 +202,11 @@ the callback in a call to webshot.
       <th>captureSelector</th>
       <td>false</td>
       <td>Captures the page area containing the provided selector and saves it to file.</td>
+    </tr>
+    <tr>
+      <th>htmlEncoding</th>
+      <td>utf-8</td>
+      <td>If passing HTML the encoding to be used. If none, the html is parsed as a buffer.</td>
     </tr>
   </tbody>
 </table>
