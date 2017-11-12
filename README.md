@@ -255,7 +255,7 @@ var options = {
 ```
 
 ## Tests
-Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be
+Tests are written with [Mocha](http://mochajs.org/) and can be
 run with `npm test`. The tests use [node-imagemagick](http://github.com/rsms/node-imagemagick) and thus require
 that the [imagemagick CLI tools](http://www.imagemagick.org) be installed.
 
