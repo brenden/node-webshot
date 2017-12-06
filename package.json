@@ -22,8 +22,8 @@
     "node >=0.7.00"
   ],
   "dependencies": {
-    "graceful-fs": "~3.0.4",
     "cross-spawn": "^0.2.3",
+    "graceful-fs": "^4.1.3",
     "tmp": "~0.0.25"
   },
   "optionalDependencies": {
