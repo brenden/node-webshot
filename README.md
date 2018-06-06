@@ -213,7 +213,11 @@ By default this package installs PhantomJS 1.9.x. Several issues exist in this v
 In addition to these options, the following options can be specified and will be
 passed to the [Phantom page
 object](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage):
-`paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`.
+`paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`. When using
+`paperSize.header.contents` or `paperSize.footer.contents`, pass a string to use
+as the header or footer and use the placeholders `{pageNumber}` and `{numberOfPages}`
+where needed. You cannot pass a `phantom.callback` to `paperSize.header.contents`
+or `paperSize.footer.contents`.
 
 ### Phantom callbacks
 Arbitrary scripts can be run on the page before it gets rendered by using any of
@@ -229,13 +233,13 @@ var options = {
     for (var i=0; i<links.length; i++) {
       var link = links[i];
       link.innerHTML = 'My custom text';
-    } 
+    }
   }
 };
 ```
 
 Note that the script will be serialized and then passed to Phantom as text, so all
-variable scope information will be lost. However, variables from the caller can be 
+variable scope information will be lost. However, variables from the caller can be
 passed into the script as follows:
 
 ```javascript
@@ -247,7 +251,7 @@ var options = {
       for (var i=0; i<links.length; i++) {
         var link = links[i];
         link.innerHTML = this.foo;
-      } 
+      }
     }
   , context: {foo: 'My custom text'}
   }
