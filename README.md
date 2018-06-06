@@ -213,7 +213,9 @@ By default this package installs PhantomJS 1.9.x. Several issues exist in this v
 In addition to these options, the following options can be specified and will be
 passed to the [Phantom page
 object](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage):
-`paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`. When using
+`paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`.
+
+When using
 `paperSize.header.contents` or `paperSize.footer.contents`, pass a string to use
 as the header or footer and use the placeholders `{pageNumber}` and `{numberOfPages}`
 where needed. You cannot pass a `phantom.callback` to `paperSize.header.contents`
