@@ -216,21 +216,13 @@ object](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage):
 `paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`.
 
 To set a header and footer set `contentsTemplateString` or `contentsTemplateFile`
-in `paperSize.header` or `paperSize.footer`, where `{contentsTemplateFile}` is an
+in `paperSize.header` or `paperSize.footer`, where `contentsTemplateFile` is an
 absolute path to a file containing the header or footer template.
 
 You may use `{pageNumber}` and `{numberOfPages}` placeholders in the header and
 footer templates, plus you may also specify other placeholders specifying
-`paperSize.header.placeholders` as an object.
-
-When using
-`paperSize.header.contents` or `paperSize.footer.contents`, pass a string to use
-as the header or footer and use the placeholders `{pageNumber}` and `{numberOfPages}`
-where needed. You cannot pass a `phantom.callback` to `paperSize.header.contents`
-or `paperSize.footer.contents`.
-
-You can also pass `paperSize.header.placeholders` as an object with each property
-being a placeholder you'd like to use in the header or footer template.
+`paperSize.header.placeholders` as an object. If you set a placeholder `foo` to
+the value `bar` you can use it in your header or footer as `{foo}`.
 
 ### Phantom callbacks
 Arbitrary scripts can be run on the page before it gets rendered by using any of
