@@ -215,6 +215,15 @@ passed to the [Phantom page
 object](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage):
 `paperSize`, `zoomFactor`, `cookies`, `customHeaders`, and `settings`.
 
+To set a header and footer set `contentsTemplateString` or `contentsTemplateFile`
+in `paperSize.header` or `paperSize.footer`, where `contentsTemplateFile` is an
+absolute path to a file containing the header or footer template.
+
+You may use `{pageNumber}` and `{numberOfPages}` placeholders in the header and
+footer templates, plus you may also specify other placeholders specifying
+`paperSize.header.placeholders` as an object. If you set a placeholder `foo` to
+the value `bar` you can use it in your header or footer as `{foo}`.
+
 ### Phantom callbacks
 Arbitrary scripts can be run on the page before it gets rendered by using any of
 Phantom's [page callbacks](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#callbacks-list),
@@ -229,13 +238,13 @@ var options = {
     for (var i=0; i<links.length; i++) {
       var link = links[i];
       link.innerHTML = 'My custom text';
-    } 
+    }
   }
 };
 ```
 
 Note that the script will be serialized and then passed to Phantom as text, so all
-variable scope information will be lost. However, variables from the caller can be 
+variable scope information will be lost. However, variables from the caller can be
 passed into the script as follows:
 
 ```javascript
@@ -247,7 +256,7 @@ var options = {
       for (var i=0; i<links.length; i++) {
         var link = links[i];
         link.innerHTML = this.foo;
-      } 
+      }
     }
   , context: {foo: 'My custom text'}
   }
