@@ -1,6 +1,6 @@
 {
   "name": "webshot",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "description": "Easy website screenshots",
   "author": "Brenden Kokoszka",
   "contributors": [
@@ -22,7 +22,7 @@
     "node >=0.7.00"
   ],
   "dependencies": {
-    "graceful-fs": "~3.0.4",
+    "graceful-fs": "^4.1.15",
     "cross-spawn": "^0.2.3",
     "tmp": "~0.0.25"
   },
